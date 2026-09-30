@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { @apply bg-bg font-sans text-ink antialiased overflow-x-hidden; }
+:focus-visible { outline: 2px solid #22D3EE; outline-offset: 3px; border-radius: 6px; }
+::selection { background: rgba(124, 92, 252, 0.4); }
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-28; }
+  .card { @apply rounded-2xl border border-line bg-card; }
+  .h-display { @apply font-display font-bold uppercase leading-[0.98] tracking-tight; }
+  .badge { @apply rounded-full border border-line bg-white/5 px-3 py-1 text-xs text-mute; }
+}
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { animation: marquee 30s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
